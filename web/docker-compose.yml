@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  diplomarbeit_db: 
+    image: mariadb
+    container_name: diplomarbeit_db
+    environment:
+      MARIADB_ROOT_PASSWORD: RZp7z1FNp3atzHth
+      MARIADB_DATABASE: sensor
+    ports:
+      - "6034:3306"
+    volumes:
+      - dbdata:/var/lib/mysql
+    restart: always
+  
+  diplomarbeit_pma:
+    image: phpmyadmin
+    container_name: diplomarbeit_pma 
+    links: 
+      - diplomarbeit_db
+    environment:
+      PMA_HOST: diplomarbeit_db
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    restart: always
+    ports:
+      - 81:80
+    
+  diplomarbeit_api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: diplomarbeit_api
+    links:
+      - diplomarbeit_db
+    restart: always
+    ports:
+      - 3001:3001
+    volumes:
+      - ./app:/app
+      - ./api:/api
+  
+volumes:
+  dbdata:   

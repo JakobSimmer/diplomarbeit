@@ -1,0 +1,52 @@
+
+Das Web-Interface kann in einem Browser über folgende URL abgerufen werden: \verb|http://localhost:3001|.
+Es ist wichtig, dass \verb|localhost| verwendet wird und nicht die IP des Docker-Containers, da 
+Probleme mit der CORS-Policy entstehen können. Alle Graphen sind untereinander angeordnet; 
+um die individuellen Kosten anzupassen, kann auf den jeweiligen Graphen geklickt werden, 
+und im Eingabefeld können die Kosten in Cent eingegeben werden. Um die Datenbank verwalten zu können, 
+wurde PHPmyAdmin verwendet, welches auf folgender URL abgerufen werden kann: \verb|http://localhost:81|.
+Die Anmeldedaten für die Datenbank lauten: 
+\\
+User: \verb|root|
+\\
+Password: \verb|RZp7z1FNp3atzHth|
+\\
+Datenbank: \verb|sensor|
+
+\section{Mögliche Fehlerquellen}
+
+Sollte das RaspberryPi neu gestartet werden, kann es vorkommen, dass sich die IP-Adresse der Datenbank
+innerhalb des Docker Containers verändert hat. Im root-Verzeichnis des Projekts (\verb|~/Documents/diplomarbeit/|) befindet sich ein 
+Skript namens \verb|init_db_ip.sh|. Dieses aktualisiert die IP-Adresse der Datenbank im Server. 
+Es sollten folgende Schritte hintereinander ausgeführt werden, um die API (den Server) neu zu starten:
+\\
+\\
+\verb|$> cd ~/Documents/diplomarbeit|
+\\
+\verb|$> ./init_db_ip.sh|
+\\
+\verb|$> sudo docker stop diplomarbeit_api|
+\\
+\verb|$> sudo docker remove diplomarbeit_api|
+\\
+\verb|$> cd web/|
+\\
+\verb|$> sudo docker compose up -d|
+\\
+\\
+Falls die Datenbank noch nicht läuft, sollte das Docker Compose projekt angestartet werden:
+\\
+\verb|$> cd ~/Documents/diplomarbeit/web|
+\\
+\verb|$> sudo docker compose up -d|
+\\
+\\
+Ob jeder Container erfolgreich läuft, kann mit folgendem Befehl überprüft werden:
+\\
+\verb|$> sudo docker ps -a|
+\\
+\\
+Sollten keine Graphen angezeigt werden, kann über folgendem Befehl bei der API auf Fehlernachrichten überprüft werden:
+\\
+\verb|$> sudo docker logs diplomarbeit_api|
+

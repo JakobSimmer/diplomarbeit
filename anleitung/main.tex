@@ -1,0 +1,86 @@
+\RequirePackage{scrlfile}
+\ReplacePackage{scrpage2}{scrlayer-scrpage}
+
+\documentclass[paper=a4,12pt,pointlessnumbers,twoside]{scrreprt}
+\usepackage[automark]{scrlayer-scrpage} 
+% Encoding UTF8
+\usepackage[utf8]{inputenc}
+% 8 Bit Aufloesung der Buchstaben
+\usepackage[T1]{fontenc}
+% Seitenraender
+\usepackage[scale=0.72]{geometry}
+% Spracheinstellungen
+\usepackage[english, naustrian]{babel} % your native language must be the last one!!
+% erweiterte Farbenpalette
+\usepackage[dvipsnames, table]{xcolor}
+% Abbildungen
+\usepackage{graphicx}
+% Tabellen (erweitert)
+\usepackage{tabularx}
+% Mathematikpakete!
+\usepackage{amsmath,amssymb}							
+\usepackage{mathtools}	
+% PDF Einbindung (zB Datenblaetter)
+\usepackage{pdfpages}
+% Source Code Einbindung, Setup siehe:
+% http://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings									
+\usepackage{listings,scrhack} %scrhack vermeidet Umschaltung auf KOMA Floats..			
+			
+\usepackage{verbatim}
+\usepackage{textcomp}
+
+\usepackage{bookmark}
+
+\usepackage{eurosym}
+\usepackage{lscape}
+% Diplomarbeitsspezifisches Package etdipa
+
+\usepackage{keyval}
+\usepackage{caption}
+
+%% Subfigures
+\usepackage[lofdepth]{subfig}
+
+\usepackage{import}
+
+\usepackage{nameref}
+\usepackage{arrayjob}
+% folowing  must be in this order
+\usepackage{varioref}
+% \usepackage[colorlinks=true,
+% 			linkcolor=black,
+% 			citecolor=black,
+% 			bookmarks=true,
+% 			urlcolor=black,
+% 			bookmarksopen=true]{hyperref}
+\usepackage{cleveref}
+\usepackage{float}
+\usepackage{rotating}
+\usepackage{longtable}
+%\usepackage[allfiguresdraft]{draftfigure}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{array}
+
+\usepackage{fancyvrb} %Fancy Code-Layout
+\usepackage{xparse}
+
+\usepackage{acronym}
+
+\usepackage{algpseudocode, algorithm}
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
+
+\RedeclareSectionCommand[beforeskip=0pt]{chapter}
+
+\pdfcompresslevel=9 
+\pdfobjcompresslevel=9
+
+\begin{document}
+\chapter{Die Hardware}
+\input{Textparts/Stecker.tex}
+\input{Textparts/Zusatzprint.tex}
+\chapter{Das Web-Interface}
+\input{Textparts/Interface.tex}
+
+\end{document}

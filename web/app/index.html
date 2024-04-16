@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="ext/jquery.min.js"></script>
+    <script src="ext/chart.min.js"></script>
+    <script src="js/chart.js"></script>
+    <script src="js/data.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <title>Prozessüberwachung</title>
+</head>
+<body>
+    <h1 class="header">Produktionsprozessüberwachung</h1>
+    <div class="graphContainer">
+        <div class="containerTop">
+            <div class="wasserdampfGraphWrapper graph">
+                <h2>Wasserdampf</h2>
+                <canvas id="wasserdampfGraph"></canvas>
+            </div>
+            <div class="stromGraphWrapper graph">
+                <h2>Strom</h2>
+                <canvas id="stromGraph"></canvas>
+            </div>
+        </div>
+        <div class="containerBottom">
+            <div class="druckluftGraphWrapper graph">
+                <h2>Druckluft</h2>
+                <canvas id="druckluftGraph"></canvas>
+            </div>
+            <div class="vakuumGraphWrapper graph">
+                <h2>Vakuum</h2>
+                <canvas id="vakuumGraph"></canvas>
+            </div>
+        </div>
+        <div class="costGraphWrapper graph">
+            <h2>Kosten</h2>
+            <canvas id="costGraph"></canvas>
+        </div>
+    </div>
+</body>
+</html>
+
